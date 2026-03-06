@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class PipeMiddleScript : MonoBehaviour
 {
-    public LogicScript logic; // referens till LogicScript
+    public LogicScript logic;
 
     void Start()
     {
-        // hittar LogicManager i scenen
+        // hittar Logic Manager via tag
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // när bird flyger igenom mitten
-        if (collision.gameObject.layer == 3)
+        // kollar om det är spelaren som flyger igenom
+        if (collision.CompareTag("Player"))
         {
-            logic.addScore(1); // ökar score med 1
+            logic.addScore(1); // öka score med 1
         }
     }
 }
