@@ -1,25 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PipeMiddleScript : MonoBehaviour
 {
-    public LogicScript logic;
+    public LogicScript logic; // referens till LogicScript
 
-    // Start is called before the first frame update
     void Start()
     {
+        // hittar LogicManager i scenen
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        logic.addScore();
+        // när bird flyger igenom mitten
+        if (collision.gameObject.layer == 3)
+        {
+            logic.addScore(1); // ökar score med 1
+        }
     }
 }
