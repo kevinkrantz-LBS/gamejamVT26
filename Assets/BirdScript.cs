@@ -24,4 +24,4 @@ public class BirdScript : MonoBehaviour
         rotation = Mathf.Clamp(rotation, -90, 45);
         transform.rotation = Quaternion.Euler(0, 0, rotation);
     }
-}
+}       
